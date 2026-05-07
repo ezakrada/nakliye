@@ -1,0 +1,721 @@
+@import "tailwindcss";
+
+/* =====================================================================
+   EŞYAM — "Atlas Concierge" tasarım sistemi
+   Editorial cartography on cool white. Bento + hairlines + ink + signal blue.
+   ===================================================================== */
+
+:root,
+[data-theme="lumen"] {
+  /* surfaces — slightly warm paper, mimari kâğıt hissi */
+  --bg-base: #fafaf7;              /* warm paper, ne pure white ne bone */
+  --bg-paper: #ffffff;             /* card backgrounds */
+  --bg-cool: #f2f4f7;              /* section bands */
+  --bg-glacier: #eaeef2;           /* bento panels — soğuk mavi cast */
+  --bg-mist: #f5f6f8;              /* soft secondary */
+  --bg-ink: #0b1220;               /* deep navy-ink */
+  --bg-ink-2: #14213a;
+
+  /* glass — premium 18-32px blur, hairline border */
+  --glass-panel: rgba(255, 255, 255, 0.62);
+  --glass-panel-strong: rgba(255, 255, 255, 0.82);
+  --glass-panel-cool: rgba(234, 238, 242, 0.72);
+  --glass-blur: 24px;
+  --glass-saturate: 1.5;
+  --hairline: rgba(11, 18, 32, 0.07);       /* 0.5px-feel via low contrast */
+  --hairline-strong: rgba(11, 18, 32, 0.12);
+  --hairline-emphasis: rgba(11, 18, 32, 0.20);
+
+  /* ink */
+  --text-primary: #0b1220;         /* near-black with blue undertone */
+  --text-secondary: #3b4654;       /* slate */
+  --text-tertiary: #7a8493;        /* meta, captions */
+  --text-on-deep: #edf1f7;
+  --text-on-deep-2: #a8b2c1;
+
+  /* accents — Reflex Blue ink + warm spark (HOVER ONLY) */
+  --accent-signal: #1f4fd9;        /* THE blue — daha violet, daha distinctive */
+  --accent-signal-deep: #0a1f4d;
+  --accent-signal-soft: #dde5fa;
+  --accent-deep: #0a1f4d;          /* navy emphasis */
+  --accent-spark: #d87c3a;         /* burnt amber — yalnızca hover/route terminus */
+  --accent-spark-soft: rgba(216, 124, 58, 0.12);
+  --accent-gold: #c8a55b;
+  --accent-mint: #1f9d7a;          /* success/active */
+
+  /* status */
+  --success: #1f9d7a;
+  --warning: #d18c2e;
+  --danger: #d63a2f;
+  --info: #1f4fd9;
+
+  /* ── legacy aliases (admin uses these from previous design) ── */
+  --accent-terra: var(--accent-signal);
+  --accent-terra-deep: var(--accent-signal-deep);
+  --accent-terra-soft: var(--accent-signal-soft);
+  --accent-cypress: var(--accent-mint);
+  --accent-cypress-soft: rgba(31, 157, 122, 0.12);
+  --accent-honey: var(--accent-spark);
+  --bg-elevated: var(--bg-paper);
+  --bg-tinted: var(--bg-cool);
+  --bg-deep: var(--bg-ink);
+  --text-on-deep: #edf1f7;
+  --glass-border: var(--hairline);
+  --glass-border-strong: var(--hairline-strong);
+  --shadow-neu-out: 0 8px 18px rgba(11, 18, 32, 0.04), -2px -2px 8px rgba(255, 255, 255, 0.6);
+  --shadow-neu-in: inset 4px 4px 10px rgba(11, 18, 32, 0.04);
+  --grad-terra: var(--grad-signal);
+  --grad-cypress: linear-gradient(135deg, #4cc1a3 0%, #1f9d7a 60%, #16745a 100%);
+
+  /* shadows — restrained, high-quality */
+  --shadow-card: 0 0.5px 0 rgba(255,255,255,0.4) inset, 0 1px 2px rgba(10, 22, 40, 0.04), 0 8px 24px -16px rgba(10, 22, 40, 0.16);
+  --shadow-pop: 0 0.5px 0 rgba(255,255,255,0.5) inset, 0 1px 2px rgba(10, 22, 40, 0.06), 0 24px 60px -28px rgba(10, 22, 40, 0.28);
+  --shadow-elevation: 0 32px 80px -40px rgba(10, 22, 40, 0.32);
+
+  /* gradients — restrained, cartographic */
+  --grad-bg: radial-gradient(1100px 600px at 92% -10%, rgba(31, 79, 217, 0.08), transparent 60%),
+             radial-gradient(900px 500px at 0% 110%, rgba(234, 238, 242, 0.7), transparent 65%);
+  --grad-signal: linear-gradient(135deg, #3b6cf0 0%, #1f4fd9 60%, #0a1f4d 100%);
+  --grad-ink: linear-gradient(135deg, #14213a 0%, #0b1220 100%);
+}
+
+/* ─── FOREST — cool white + cypress green + spark coral ─── */
+[data-theme="forest"] {
+  --bg-base: #f8faf7;
+  --bg-paper: #ffffff;
+  --bg-cool: #eef2ec;
+  --bg-glacier: #e3ebe1;
+  --bg-mist: #f0f4ee;
+  --bg-ink: #0f2818;
+  --bg-ink-2: #1a3826;
+
+  --glass-panel: rgba(255, 255, 255, 0.62);
+  --glass-panel-strong: rgba(255, 255, 255, 0.82);
+  --glass-panel-cool: rgba(227, 235, 225, 0.72);
+  --hairline: rgba(15, 40, 24, 0.07);
+  --hairline-strong: rgba(15, 40, 24, 0.12);
+  --hairline-emphasis: rgba(15, 40, 24, 0.20);
+
+  --text-primary: #0f2818;
+  --text-secondary: #3a4f3e;
+  --text-tertiary: #7a8a7d;
+  --text-on-deep: #eef4ec;
+  --text-on-deep-2: #b7c7b9;
+
+  --accent-signal: #1f7a4e;
+  --accent-signal-deep: #0f4d2f;
+  --accent-signal-soft: #d5ebde;
+  --accent-deep: #0f4d2f;
+  --accent-spark: #d87c3a;
+  --accent-spark-soft: rgba(216, 124, 58, 0.12);
+  --accent-gold: #c8a55b;
+  --accent-mint: #1f7a4e;
+
+  --success: #1f7a4e;
+  --warning: #d18c2e;
+  --danger: #b94235;
+  --info: #1f7a4e;
+
+  --accent-terra: var(--accent-signal);
+  --accent-terra-deep: var(--accent-signal-deep);
+  --accent-terra-soft: var(--accent-signal-soft);
+  --accent-cypress: var(--accent-signal);
+  --accent-cypress-soft: var(--accent-signal-soft);
+  --grad-bg: radial-gradient(1100px 600px at 92% -10%, rgba(31, 122, 78, 0.10), transparent 60%),
+             radial-gradient(900px 500px at 0% 110%, rgba(227, 235, 225, 0.7), transparent 65%);
+  --grad-signal: linear-gradient(135deg, #2e9c66 0%, #1f7a4e 60%, #0f4d2f 100%);
+  --grad-terra: var(--grad-signal);
+  --grad-cypress: var(--grad-signal);
+  --grad-ink: linear-gradient(135deg, #1a3826 0%, #0f2818 100%);
+
+  --shadow-card: 0 0.5px 0 rgba(255,255,255,0.4) inset, 0 1px 2px rgba(15, 40, 24, 0.04), 0 8px 24px -16px rgba(15, 40, 24, 0.16);
+  --shadow-pop: 0 0.5px 0 rgba(255,255,255,0.5) inset, 0 1px 2px rgba(15, 40, 24, 0.06), 0 24px 60px -28px rgba(15, 40, 24, 0.28);
+  --shadow-elevation: 0 32px 80px -40px rgba(15, 40, 24, 0.32);
+  --shadow-neu-out: 0 8px 18px rgba(15, 40, 24, 0.04), -2px -2px 8px rgba(255, 255, 255, 0.6);
+  --shadow-neu-in: inset 4px 4px 10px rgba(15, 40, 24, 0.04);
+
+  --bg-elevated: var(--bg-paper);
+  --bg-tinted: var(--bg-cool);
+  --bg-deep: var(--bg-ink);
+  --glass-border: var(--hairline);
+  --glass-border-strong: var(--hairline-strong);
+  --accent-honey: var(--accent-spark);
+}
+
+/* ─── CORAL — warm cream + burnt orange + deep navy emphasis ─── */
+[data-theme="coral"] {
+  --bg-base: #faf6f0;
+  --bg-paper: #fffdf9;
+  --bg-cool: #f5ede1;
+  --bg-glacier: #f0e3d0;
+  --bg-mist: #f7f1e7;
+  --bg-ink: #2a1a0d;
+  --bg-ink-2: #3d2516;
+
+  --glass-panel: rgba(255, 253, 249, 0.62);
+  --glass-panel-strong: rgba(255, 253, 249, 0.82);
+  --glass-panel-cool: rgba(240, 227, 208, 0.72);
+  --hairline: rgba(42, 26, 13, 0.08);
+  --hairline-strong: rgba(42, 26, 13, 0.14);
+  --hairline-emphasis: rgba(42, 26, 13, 0.22);
+
+  --text-primary: #2a1a0d;
+  --text-secondary: #594632;
+  --text-tertiary: #8d7c66;
+  --text-on-deep: #faf6f0;
+  --text-on-deep-2: #c7b39a;
+
+  --accent-signal: #d04b1f;
+  --accent-signal-deep: #9c3210;
+  --accent-signal-soft: #fbdcc9;
+  --accent-deep: #2a1a0d;
+  --accent-spark: #c8a55b;
+  --accent-spark-soft: rgba(200, 165, 91, 0.16);
+  --accent-gold: #c8a55b;
+  --accent-mint: #2e7d5b;
+
+  --success: #2e7d5b;
+  --warning: #c8a55b;
+  --danger: #b94235;
+  --info: #d04b1f;
+
+  --accent-terra: var(--accent-signal);
+  --accent-terra-deep: var(--accent-signal-deep);
+  --accent-terra-soft: var(--accent-signal-soft);
+  --accent-cypress: var(--accent-mint);
+  --accent-cypress-soft: rgba(46, 125, 91, 0.14);
+  --grad-bg: radial-gradient(1100px 600px at 92% -10%, rgba(208, 75, 31, 0.12), transparent 60%),
+             radial-gradient(900px 500px at 0% 110%, rgba(240, 227, 208, 0.7), transparent 65%);
+  --grad-signal: linear-gradient(135deg, #e26a3e 0%, #d04b1f 60%, #9c3210 100%);
+  --grad-terra: var(--grad-signal);
+  --grad-cypress: linear-gradient(135deg, #4cb188 0%, #2e7d5b 100%);
+  --grad-ink: linear-gradient(135deg, #3d2516 0%, #2a1a0d 100%);
+
+  --shadow-card: 0 0.5px 0 rgba(255,255,255,0.4) inset, 0 1px 2px rgba(42, 26, 13, 0.04), 0 8px 24px -16px rgba(42, 26, 13, 0.16);
+  --shadow-pop: 0 0.5px 0 rgba(255,255,255,0.5) inset, 0 1px 2px rgba(42, 26, 13, 0.06), 0 24px 60px -28px rgba(42, 26, 13, 0.28);
+  --shadow-elevation: 0 32px 80px -40px rgba(42, 26, 13, 0.32);
+  --shadow-neu-out: 0 8px 18px rgba(42, 26, 13, 0.04), -2px -2px 8px rgba(255, 255, 255, 0.6);
+  --shadow-neu-in: inset 4px 4px 10px rgba(42, 26, 13, 0.04);
+
+  --bg-elevated: var(--bg-paper);
+  --bg-tinted: var(--bg-cool);
+  --bg-deep: var(--bg-ink);
+  --glass-border: var(--hairline);
+  --glass-border-strong: var(--hairline-strong);
+  --accent-honey: var(--accent-spark);
+}
+
+/* ─── NAVY — deep blueprint paper + brass ink ─── */
+[data-theme="navy"] {
+  --bg-base: #0c1426;
+  --bg-paper: #131e36;
+  --bg-cool: #142441;
+  --bg-glacier: #1a2c4d;
+  --bg-mist: #1a253c;
+  --bg-ink: #060c1a;
+  --bg-ink-2: #0c1426;
+
+  --glass-panel: rgba(20, 36, 65, 0.55);
+  --glass-panel-strong: rgba(26, 44, 77, 0.78);
+  --glass-panel-cool: rgba(20, 36, 65, 0.65);
+  --hairline: rgba(255, 255, 255, 0.08);
+  --hairline-strong: rgba(255, 255, 255, 0.14);
+  --hairline-emphasis: rgba(255, 255, 255, 0.22);
+
+  --text-primary: #f1f5fc;
+  --text-secondary: #b1bdd6;
+  --text-tertiary: #6e7d99;
+  --text-on-deep: #f1f5fc;
+  --text-on-deep-2: #b1bdd6;
+
+  --accent-signal: #6c95ff;
+  --accent-signal-deep: #2f60ff;
+  --accent-signal-soft: rgba(108, 149, 255, 0.18);
+  --accent-deep: #b1bdd6;
+  --accent-spark: #f0c060;
+  --accent-spark-soft: rgba(240, 192, 96, 0.18);
+  --accent-gold: #f0c060;
+  --accent-mint: #4cd1aa;
+
+  --success: #4cd1aa;
+  --warning: #f0c060;
+  --danger: #ff7a6a;
+  --info: #6c95ff;
+
+  --accent-terra: var(--accent-signal);
+  --accent-terra-deep: var(--accent-signal-deep);
+  --accent-terra-soft: var(--accent-signal-soft);
+  --accent-cypress: var(--accent-mint);
+  --accent-cypress-soft: rgba(76, 209, 170, 0.18);
+  --grad-bg: radial-gradient(1200px 600px at 80% -10%, rgba(108, 149, 255, 0.18), transparent 60%),
+             radial-gradient(900px 500px at 0% 110%, rgba(20, 36, 65, 0.6), transparent 65%);
+  --grad-signal: linear-gradient(135deg, #8fb0ff 0%, #6c95ff 60%, #2f60ff 100%);
+  --grad-terra: var(--grad-signal);
+  --grad-cypress: linear-gradient(135deg, #6ee0bf 0%, #4cd1aa 60%, #2eaa84 100%);
+  --grad-ink: linear-gradient(135deg, #131e36 0%, #060c1a 100%);
+
+  --shadow-card: 0 0.5px 0 rgba(255,255,255,0.04) inset, 0 12px 32px -18px rgba(0, 0, 0, 0.7);
+  --shadow-pop: 0 1px 0 rgba(255,255,255,0.05) inset, 0 30px 80px -36px rgba(0, 0, 0, 0.85);
+  --shadow-elevation: 0 40px 100px -50px rgba(0, 0, 0, 0.9);
+  --shadow-neu-out: 8px 8px 22px rgba(0, 0, 0, 0.55), -4px -4px 14px rgba(255, 255, 255, 0.02);
+  --shadow-neu-in: inset 4px 4px 12px rgba(0, 0, 0, 0.5);
+
+  --bg-elevated: var(--bg-paper);
+  --bg-tinted: var(--bg-cool);
+  --bg-deep: var(--bg-ink);
+  --glass-border: var(--hairline);
+  --glass-border-strong: var(--hairline-strong);
+  --accent-honey: var(--accent-spark);
+}
+
+/* ─── DARK (graphite) — warm graphite + lifted signal ─── */
+[data-theme="dark"] {
+  --bg-base: #0c0f14;            /* warm graphite */
+  --bg-paper: #11151c;
+  --bg-cool: #11151c;
+  --bg-glacier: #161b24;
+  --bg-mist: #14181f;
+  --bg-ink: #0b1220;
+  --bg-ink-2: #14213a;
+
+  --glass-panel: rgba(22, 27, 36, 0.55);
+  --glass-panel-strong: rgba(28, 34, 46, 0.78);
+  --glass-panel-cool: rgba(22, 27, 36, 0.62);
+  --hairline: rgba(255, 255, 255, 0.07);
+  --hairline-strong: rgba(255, 255, 255, 0.12);
+  --hairline-emphasis: rgba(255, 255, 255, 0.20);
+
+  --text-primary: #edf1f7;
+  --text-secondary: #a8b2c1;
+  --text-tertiary: #646e7e;
+  --text-on-deep: #edf1f7;
+  --text-on-deep-2: #a8b2c1;
+
+  --accent-signal: #5b82ff;
+  --accent-signal-deep: #1f4fd9;
+  --accent-signal-soft: rgba(91, 130, 255, 0.18);
+  --accent-deep: #9db4ff;
+  --accent-spark: #e8a064;
+  --accent-spark-soft: rgba(232, 160, 100, 0.16);
+  --accent-gold: #d4b876;
+  --accent-mint: #4cc1a3;
+
+  --success: #4cc1a3;
+  --warning: #e2a852;
+  --danger: #ff7468;
+  --info: #5a82ff;
+
+  --shadow-card: 0 0.5px 0 rgba(255,255,255,0.04) inset, 0 12px 32px -18px rgba(0, 0, 0, 0.6);
+  --shadow-pop: 0 1px 0 rgba(255,255,255,0.05) inset, 0 30px 80px -36px rgba(0, 0, 0, 0.85);
+  --shadow-elevation: 0 40px 100px -50px rgba(0, 0, 0, 0.9);
+
+  --grad-bg: radial-gradient(1200px 600px at 80% -10%, rgba(90, 130, 255, 0.18), transparent 60%),
+             radial-gradient(900px 500px at 0% 100%, rgba(20, 34, 53, 0.6), transparent 65%);
+  --grad-signal: linear-gradient(135deg, #7a9bff 0%, #5a82ff 60%, #2f60ff 100%);
+  --grad-ink: linear-gradient(135deg, #1a2a44 0%, #050810 100%);
+}
+
+@theme inline {
+  --color-bg: var(--bg-base);
+  --color-paper: var(--bg-paper);
+  --color-glacier: var(--bg-glacier);
+  --color-mist: var(--bg-mist);
+  --color-ink: var(--text-primary);
+  --color-ink-2: var(--text-secondary);
+  --color-ink-3: var(--text-tertiary);
+  --color-signal: var(--accent-signal);
+  --color-spark: var(--accent-spark);
+  --color-gold: var(--accent-gold);
+  --color-mint: var(--accent-mint);
+  --color-hairline: var(--hairline);
+  --color-hairline-strong: var(--hairline-strong);
+
+  --font-display: var(--font-geist-sans), -apple-system, "SF Pro Display", system-ui, sans-serif;
+  --font-sans: var(--font-geist-sans), -apple-system, "SF Pro Text", system-ui, sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, "SF Mono", monospace;
+
+  --radius-xs: 8px;
+  --radius-sm: 12px;
+  --radius-md: 18px;
+  --radius-lg: 26px;
+  --radius-xl: 36px;
+  --radius-pill: 999px;
+}
+
+/* base ----------------------------------------------------------------- */
+* { box-sizing: border-box; }
+
+html {
+  -webkit-text-size-adjust: 100%;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+body {
+  background: var(--bg-base);
+  color: var(--text-primary);
+  font-family: var(--font-sans);
+  font-feature-settings: "ss01", "cv11";
+  font-size: 16px;
+  line-height: 1.55;
+  letter-spacing: -0.011em;
+  overflow-x: hidden;
+  width: 100%;
+  min-height: 100dvh;
+}
+
+/* atmospheric wash — cartographic */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: var(--grad-bg);
+  pointer-events: none;
+  z-index: 0;
+}
+
+main { position: relative; z-index: 1; }
+
+/* tipografi ------------------------------------------------------------ */
+.h-display {
+  font-family: var(--font-display);
+  font-weight: 600;
+  letter-spacing: -0.034em;
+  line-height: 1.02;
+}
+
+.h-display-tight {
+  font-family: var(--font-display);
+  font-weight: 600;
+  letter-spacing: -0.045em;
+  line-height: 0.96;
+}
+
+.h-eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.66rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--text-tertiary);
+  font-weight: 500;
+}
+
+.num {
+  font-family: var(--font-mono);
+  font-feature-settings: "tnum", "cv11";
+  letter-spacing: -0.015em;
+}
+
+.coord {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--text-tertiary);
+  letter-spacing: 0.05em;
+}
+
+::selection {
+  background: var(--accent-signal);
+  color: #fff;
+}
+
+a { color: inherit; text-decoration: none; }
+
+/* glass utilities — premium frosted ----------------------------------- */
+.glass {
+  background: var(--glass-panel);
+  backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturate));
+  -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturate));
+  border: 1px solid var(--hairline);
+}
+
+.glass-strong {
+  background: var(--glass-panel-strong);
+  backdrop-filter: blur(40px) saturate(1.7);
+  -webkit-backdrop-filter: blur(40px) saturate(1.7);
+  border: 1px solid var(--hairline-strong);
+}
+
+.glass-cool {
+  background: var(--glass-panel-cool);
+  backdrop-filter: blur(28px) saturate(1.4);
+  -webkit-backdrop-filter: blur(28px) saturate(1.4);
+  border: 1px solid var(--hairline);
+}
+
+.paper {
+  background: var(--bg-paper);
+  border: 1px solid var(--hairline);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-card);
+}
+
+/* hairline rule — bizim leitmotif */
+.rule {
+  height: 1px;
+  width: 100%;
+  background: linear-gradient(to right, transparent, var(--hairline-strong) 12%, var(--hairline-strong) 88%, transparent);
+}
+.rule-v {
+  width: 1px;
+  height: 100%;
+  background: linear-gradient(to bottom, transparent, var(--hairline-strong) 12%, var(--hairline-strong) 88%, transparent);
+}
+
+/* coordinate grid background — subtle */
+.grid-bg {
+  background-image:
+    linear-gradient(to right, var(--hairline) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--hairline) 1px, transparent 1px);
+  background-size: 48px 48px;
+}
+
+.grid-bg-fine {
+  background-image:
+    linear-gradient(to right, var(--hairline) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--hairline) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+/* buttons — signal blue primary, ink secondary, ghost glass */
+.btn-signal {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background: var(--accent-signal);
+  color: #fff;
+  padding: 0.85rem 1.4rem;
+  border-radius: var(--radius-pill);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  font-size: 0.95rem;
+  box-shadow: 0 0.5px 0 rgba(255,255,255,0.3) inset, 0 8px 22px -8px rgba(47, 96, 255, 0.5);
+  transition: transform .25s cubic-bezier(.16,1,.3,1), box-shadow .25s ease, background .2s ease;
+}
+.btn-signal:hover {
+  transform: translateY(-1px);
+  background: var(--accent-signal-deep);
+  box-shadow: 0 0.5px 0 rgba(255,255,255,0.4) inset, 0 14px 32px -10px rgba(47, 96, 255, 0.6);
+}
+.btn-signal:active { transform: translateY(0); }
+
+.btn-ink {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background: var(--bg-ink);
+  color: var(--text-on-deep);
+  padding: 0.85rem 1.4rem;
+  border-radius: var(--radius-pill);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  box-shadow: 0 0.5px 0 rgba(255,255,255,0.1) inset, 0 8px 24px -10px rgba(10, 22, 40, 0.5);
+  transition: transform .25s cubic-bezier(.16,1,.3,1), background .2s ease;
+}
+.btn-ink:hover { transform: translateY(-1px); background: var(--bg-ink-2); }
+
+.btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background: var(--glass-panel);
+  backdrop-filter: blur(20px) saturate(1.5);
+  -webkit-backdrop-filter: blur(20px) saturate(1.5);
+  color: var(--text-primary);
+  padding: 0.78rem 1.2rem;
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--hairline-strong);
+  font-weight: 500;
+  font-size: 0.9rem;
+  transition: background .2s ease, border-color .2s ease;
+}
+.btn-ghost:hover {
+  background: var(--glass-panel-strong);
+  border-color: var(--hairline-emphasis);
+}
+
+.btn-mint {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background: var(--accent-mint);
+  color: #fff;
+  padding: 0.85rem 1.4rem;
+  border-radius: var(--radius-pill);
+  font-weight: 600;
+  box-shadow: 0 8px 22px -8px rgba(31, 157, 122, 0.45);
+  transition: transform .25s cubic-bezier(.16,1,.3,1);
+}
+.btn-mint:hover { transform: translateY(-1px); }
+
+/* legacy button aliases */
+.btn-terra {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background: var(--accent-signal);
+  color: #fff;
+  padding: 0.85rem 1.4rem;
+  border-radius: var(--radius-pill);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  font-size: 0.95rem;
+  box-shadow: 0 0.5px 0 rgba(255,255,255,0.3) inset, 0 8px 22px -8px rgba(31, 79, 217, 0.5);
+  transition: transform .25s cubic-bezier(.16,1,.3,1), background .2s ease;
+}
+.btn-terra:hover { transform: translateY(-1px); background: var(--accent-signal-deep); }
+
+.btn-cypress {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background: var(--accent-mint);
+  color: #fff;
+  padding: 0.85rem 1.4rem;
+  border-radius: var(--radius-pill);
+  font-weight: 600;
+  box-shadow: 0 8px 22px -8px rgba(31, 157, 122, 0.45);
+  transition: transform .25s cubic-bezier(.16,1,.3,1);
+}
+.btn-cypress:hover { transform: translateY(-1px); }
+
+.chip-cypress {
+  background: var(--accent-cypress-soft);
+  color: var(--accent-mint);
+  border-color: rgba(31, 157, 122, 0.22);
+}
+
+/* card-soft — admin */
+.card-soft {
+  background: var(--bg-paper);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-card);
+  border: 1px solid var(--hairline);
+}
+
+/* chips — editorial, hairline outlined */
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.32rem 0.72rem;
+  border-radius: var(--radius-pill);
+  background: var(--accent-signal-soft);
+  color: var(--accent-signal-deep);
+  font-size: 0.74rem;
+  font-weight: 600;
+  letter-spacing: -0.005em;
+  border: 1px solid rgba(47, 96, 255, 0.18);
+}
+.chip-mint {
+  background: rgba(31, 157, 122, 0.10);
+  color: var(--accent-mint);
+  border-color: rgba(31, 157, 122, 0.18);
+}
+.chip-ink {
+  background: var(--bg-mist);
+  color: var(--text-primary);
+  border-color: var(--hairline-strong);
+}
+.chip-spark {
+  background: rgba(255, 107, 61, 0.10);
+  color: var(--accent-spark);
+  border-color: rgba(255, 107, 61, 0.22);
+}
+
+/* container */
+.section-x {
+  max-width: 1280px;
+  margin-inline: auto;
+  padding-inline: clamp(20px, 4vw, 56px);
+}
+
+/* hide scrollbar */
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { scrollbar-width: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+.bottom-cta {
+  padding-bottom: max(12px, env(safe-area-inset-bottom));
+}
+
+/* form polish — paper feel, signal focus */
+.field-base {
+  width: 100%;
+  background: var(--bg-paper);
+  border: 1px solid var(--hairline-strong);
+  border-radius: var(--radius-md);
+  padding: 0.78rem 0.95rem;
+  font: inherit;
+  color: var(--text-primary);
+  transition: border-color .2s ease, box-shadow .2s ease, background .2s ease;
+}
+.field-base:focus {
+  outline: none;
+  border-color: var(--accent-signal);
+  box-shadow: 0 0 0 3px rgba(47, 96, 255, 0.18);
+}
+.field-base::placeholder { color: var(--text-tertiary); }
+
+.scroll-snap-x {
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+}
+.scroll-snap-item { scroll-snap-align: start; }
+
+/* hover lift utility */
+.lift-hover {
+  transition: transform .3s cubic-bezier(.16,1,.3,1), box-shadow .3s ease, border-color .3s ease;
+}
+.lift-hover:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-pop);
+}
+
+/* Modal — sticky action footer (so Kaydet/İptal stay visible on mobile) */
+.modal-actions {
+  position: sticky;
+  bottom: -1.25rem;        /* compensate for parent p-5 */
+  margin-inline: -1.25rem;  /* extend to body edges */
+  margin-bottom: -1.25rem;
+  margin-top: 1rem;
+  padding: 0.85rem 1.25rem calc(0.85rem + env(safe-area-inset-bottom, 0px)) 1.25rem;
+  background: linear-gradient(
+    180deg,
+    transparent 0%,
+    var(--bg-paper) 30%,
+    var(--bg-paper) 100%
+  );
+  border-top: 1px solid var(--hairline);
+  z-index: 2;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+/* coordinate cross — small registration mark */
+.crosshair {
+  position: relative;
+}
+.crosshair::before, .crosshair::after {
+  content: "";
+  position: absolute;
+  background: var(--hairline-emphasis);
+}
+.crosshair::before { left: 0; right: 0; top: 50%; height: 1px; }
+.crosshair::after { top: 0; bottom: 0; left: 50%; width: 1px; }

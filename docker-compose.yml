@@ -1,0 +1,24 @@
+services:
+  nakliye-web:
+    build:
+      context: /opt/demos/nakliye/frontend
+      dockerfile: Dockerfile
+    container_name: demo-nakliye-web
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:8091:3000"
+    environment:
+      NODE_ENV: production
+      NEXT_TELEMETRY_DISABLED: "1"
+      APP_DEMO_MODE: "1"
+    volumes:
+      - /opt/demos/nakliye/snapshot:/opt/snapshot:ro
+      - nakliye-data:/app/data
+    networks:
+      - nakliye-net
+
+networks:
+  nakliye-net:
+
+volumes:
+  nakliye-data:

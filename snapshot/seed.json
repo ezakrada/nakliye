@@ -1,0 +1,593 @@
+{
+  "session": {
+    "version": 1,
+    "lastReset": "2026-05-05T00:00:00Z"
+  },
+  "settings": {
+    "siteName": "Eşyam Nakliyat",
+    "phone": "+90 535 104 54 43",
+    "whatsapp": "+905351045443",
+    "email": "merhaba@esyam.com.tr",
+    "address": "İstanbul · Anadolu Yakası Operasyon Merkezi",
+    "hours": "Hafta içi 08:00 — 20:00 · Cumartesi 09:00 — 18:00",
+    "insurer": "Anadolu Sigorta",
+    "kvkkEmail": "kvkk@esyam.com.tr",
+    "theme": "lumen"
+  },
+  "users": [
+    {
+      "id": 1,
+      "name": "Mahmut Eren",
+      "email": "admin@esyam.com.tr",
+      "role": "owner",
+      "password": "Esyam2026!"
+    }
+  ],
+  "quotes": [
+    {
+      "id": 1,
+      "code": "EŞ-04812",
+      "customer": "Selin Aktaş",
+      "phone": "+905321234501",
+      "from": "Kadıköy, İstanbul",
+      "to": "Çeşme, İzmir",
+      "homeType": "3+1",
+      "date": "2026-05-13",
+      "min": 18800,
+      "max": 22500,
+      "status": "onaylandı",
+      "createdAt": "2026-05-04T14:20:00Z"
+    },
+    {
+      "id": 2,
+      "code": "EŞ-04813",
+      "customer": "Mehmet Doğan",
+      "phone": "+905321234502",
+      "from": "Beşiktaş, İstanbul",
+      "to": "Bodrum, Muğla",
+      "homeType": "4+1",
+      "date": "2026-05-15",
+      "min": 28200,
+      "max": 31900,
+      "status": "beklemede",
+      "createdAt": "2026-05-04T16:00:00Z"
+    },
+    {
+      "id": 3,
+      "code": "EŞ-04814",
+      "customer": "Ayşegül Bayraktar",
+      "phone": "+905321234503",
+      "from": "Maslak, İstanbul",
+      "to": "Bursa",
+      "homeType": "2+1",
+      "date": "2026-05-10",
+      "min": 9400,
+      "max": 11200,
+      "status": "onaylandı",
+      "createdAt": "2026-05-04T18:45:00Z"
+    },
+    {
+      "id": 4,
+      "code": "EŞ-04815",
+      "customer": "Fatma Korkmaz",
+      "phone": "+905321234504",
+      "from": "Ataşehir, İstanbul",
+      "to": "Ankara",
+      "homeType": "3+1",
+      "date": "2026-05-09",
+      "min": 14200,
+      "max": 16800,
+      "status": "tamamlandı",
+      "createdAt": "2026-05-03T10:00:00Z"
+    },
+    {
+      "id": 5,
+      "code": "EŞ-04816",
+      "customer": "Onur Tunç",
+      "phone": "+905321234505",
+      "from": "Levent, İstanbul",
+      "to": "Kalamış, İstanbul",
+      "homeType": "Ofis",
+      "date": "2026-05-12",
+      "min": 8900,
+      "max": 10400,
+      "status": "onaylandı",
+      "createdAt": "2026-05-04T11:15:00Z"
+    },
+    {
+      "id": 6,
+      "code": "EŞ-04817",
+      "customer": "Deniz Aydın",
+      "phone": "+905321234506",
+      "from": "Üsküdar, İstanbul",
+      "to": "Sapanca, Sakarya",
+      "homeType": "Villa",
+      "date": "2026-05-20",
+      "min": 32500,
+      "max": 38200,
+      "status": "beklemede",
+      "createdAt": "2026-05-04T20:30:00Z"
+    },
+    {
+      "id": 7,
+      "code": "EŞ-04818",
+      "customer": "İrem Soylu",
+      "phone": "+905321234507",
+      "from": "Bahçeşehir, İstanbul",
+      "to": "Bornova, İzmir",
+      "homeType": "2+1",
+      "date": "2026-05-08",
+      "min": 11400,
+      "max": 13900,
+      "status": "iptal",
+      "createdAt": "2026-05-02T09:00:00Z"
+    },
+    {
+      "id": 8,
+      "code": "EŞ-04819",
+      "customer": "Murat Aksoy",
+      "phone": "+905321234508",
+      "from": "Şişli, İstanbul",
+      "to": "Çankaya, Ankara",
+      "homeType": "4+1",
+      "date": "2026-05-18",
+      "min": 24800,
+      "max": 28200,
+      "status": "onaylandı",
+      "createdAt": "2026-05-04T22:10:00Z"
+    }
+  ],
+  "jobs": [
+    {
+      "id": 1,
+      "code": "EŞ-04812",
+      "customer": "Selin Aktaş",
+      "route": "Kadıköy → Çeşme",
+      "date": "2026-05-13",
+      "vehicleId": 4,
+      "driverId": 2,
+      "status": "yolda",
+      "value": 21500
+    },
+    {
+      "id": 2,
+      "code": "EŞ-04814",
+      "customer": "Ayşegül Bayraktar",
+      "route": "Maslak → Bursa",
+      "date": "2026-05-10",
+      "vehicleId": 2,
+      "driverId": 1,
+      "status": "yükleme",
+      "value": 10800
+    },
+    {
+      "id": 3,
+      "code": "EŞ-04816",
+      "customer": "Onur Tunç",
+      "route": "Levent → Kalamış",
+      "date": "2026-05-12",
+      "vehicleId": 1,
+      "driverId": 3,
+      "status": "atandı",
+      "value": 9700
+    },
+    {
+      "id": 4,
+      "code": "EŞ-04819",
+      "customer": "Murat Aksoy",
+      "route": "Şişli → Çankaya",
+      "date": "2026-05-18",
+      "vehicleId": 3,
+      "driverId": 4,
+      "status": "atandı",
+      "value": 26500
+    },
+    {
+      "id": 5,
+      "code": "EŞ-04815",
+      "customer": "Fatma Korkmaz",
+      "route": "Ataşehir → Ankara",
+      "date": "2026-05-09",
+      "vehicleId": 3,
+      "driverId": 4,
+      "status": "tamamlandı",
+      "value": 15400
+    }
+  ],
+  "vehicles": [
+    {
+      "id": 1,
+      "plate": "34 ABF 0142",
+      "type": "Panelvan",
+      "code": "PV-1.5T",
+      "capacity": "8 m³",
+      "year": 2023,
+      "lastService": "2026-04-12",
+      "status": "müsait"
+    },
+    {
+      "id": 2,
+      "plate": "34 ABE 7102",
+      "type": "Tek Kabin",
+      "code": "10m³",
+      "capacity": "10–12 m³",
+      "year": 2022,
+      "lastService": "2026-03-28",
+      "status": "yükleme"
+    },
+    {
+      "id": 3,
+      "plate": "34 ABC 7421",
+      "type": "Çift Kabin",
+      "code": "22m³",
+      "capacity": "20–24 m³",
+      "year": 2024,
+      "lastService": "2026-04-22",
+      "status": "atandı"
+    },
+    {
+      "id": 4,
+      "plate": "34 BVK 2278",
+      "type": "Hassas Eşya",
+      "code": "Premium",
+      "capacity": "16 m³ · iklimli",
+      "year": 2024,
+      "lastService": "2026-04-30",
+      "status": "yolda"
+    },
+    {
+      "id": 5,
+      "plate": "34 CFR 8801",
+      "type": "Tek Kabin",
+      "code": "10m³",
+      "capacity": "10–12 m³",
+      "year": 2021,
+      "lastService": "2026-03-12",
+      "status": "bakımda"
+    }
+  ],
+  "drivers": [
+    {
+      "id": 1,
+      "name": "Hakan Yıldız",
+      "phone": "+905551110011",
+      "license": "B-E",
+      "yearsExp": 11,
+      "currentJobId": 2,
+      "rating": 4.9
+    },
+    {
+      "id": 2,
+      "name": "Murat Erbil",
+      "phone": "+905551110012",
+      "license": "B-E + ADR",
+      "yearsExp": 14,
+      "currentJobId": 1,
+      "rating": 5.0
+    },
+    {
+      "id": 3,
+      "name": "Cem Akın",
+      "phone": "+905551110013",
+      "license": "B",
+      "yearsExp": 6,
+      "currentJobId": 3,
+      "rating": 4.8
+    },
+    {
+      "id": 4,
+      "name": "Selçuk Korkmaz",
+      "phone": "+905551110014",
+      "license": "B-E",
+      "yearsExp": 9,
+      "currentJobId": 4,
+      "rating": 4.9
+    },
+    {
+      "id": 5,
+      "name": "Yusuf Demir",
+      "phone": "+905551110015",
+      "license": "B",
+      "yearsExp": 4,
+      "currentJobId": null,
+      "rating": 4.7
+    }
+  ],
+  "customers": [
+    {
+      "id": 1,
+      "name": "Selin Aktaş",
+      "phone": "+905321234501",
+      "email": "selin.aktas@example.com",
+      "moves": 1,
+      "totalValue": 21500,
+      "lastMove": "2026-05-13",
+      "tags": [
+        "VIP"
+      ]
+    },
+    {
+      "id": 2,
+      "name": "Mehmet Doğan",
+      "phone": "+905321234502",
+      "email": "mehmet.dogan@example.com",
+      "moves": 3,
+      "totalValue": 78400,
+      "lastMove": "2026-05-15",
+      "tags": [
+        "VIP",
+        "Sadık"
+      ]
+    },
+    {
+      "id": 3,
+      "name": "Ayşegül Bayraktar",
+      "phone": "+905321234503",
+      "email": "aysegul.b@example.com",
+      "moves": 1,
+      "totalValue": 10800,
+      "lastMove": "2026-05-10",
+      "tags": []
+    },
+    {
+      "id": 4,
+      "name": "Fatma Korkmaz",
+      "phone": "+905321234504",
+      "email": "fatma.k@example.com",
+      "moves": 2,
+      "totalValue": 28900,
+      "lastMove": "2026-05-09",
+      "tags": [
+        "Sadık"
+      ]
+    },
+    {
+      "id": 5,
+      "name": "Onur Tunç",
+      "phone": "+905321234505",
+      "email": "onur@kalamis.io",
+      "moves": 1,
+      "totalValue": 9700,
+      "lastMove": "2026-05-12",
+      "tags": [
+        "Kurumsal"
+      ]
+    },
+    {
+      "id": 6,
+      "name": "Deniz Aydın",
+      "phone": "+905321234506",
+      "email": "deniz.aydin@example.com",
+      "moves": 1,
+      "totalValue": 35400,
+      "lastMove": "2026-05-20",
+      "tags": [
+        "VIP"
+      ]
+    },
+    {
+      "id": 7,
+      "name": "İrem Soylu",
+      "phone": "+905321234507",
+      "email": "irem@example.com",
+      "moves": 0,
+      "totalValue": 0,
+      "lastMove": null,
+      "tags": []
+    },
+    {
+      "id": 8,
+      "name": "Murat Aksoy",
+      "phone": "+905321234508",
+      "email": "murat.aksoy@example.com",
+      "moves": 4,
+      "totalValue": 116200,
+      "lastMove": "2026-05-18",
+      "tags": [
+        "VIP",
+        "Kurumsal"
+      ]
+    }
+  ],
+  "pricing": {
+    "base": {
+      "1+1": 4500,
+      "2+1": 7500,
+      "3+1": 11500,
+      "4+1": 15500,
+      "Villa": 22000,
+      "Ofis": 9500
+    },
+    "perKm": 14,
+    "floorSurcharge": 350,
+    "extras": {
+      "packing": 800,
+      "assembly": 600,
+      "insuranceEk": 700,
+      "insurancePremium": 1500,
+      "storagePerDay": 350
+    },
+    "seasonMultipliers": {
+      "yaz": 1.1,
+      "bahar": 1.0,
+      "kis": 0.92
+    }
+  },
+  "services": [
+    {
+      "id": 1,
+      "title": "Evden Eve",
+      "icon": "Home",
+      "desc": "Tüm ev eşyanız tek seferde, sigortalı ve kayıtlı.",
+      "active": true,
+      "order": 1
+    },
+    {
+      "id": 2,
+      "title": "Asansörlü Taşıma",
+      "icon": "MoveVertical",
+      "desc": "Dış cephe asansörü ile yüksek katlardan yorulmadan.",
+      "active": true,
+      "order": 2
+    },
+    {
+      "id": 3,
+      "title": "Ofis Taşıma",
+      "icon": "Building2",
+      "desc": "Hafta sonu, gece veya bayramda.",
+      "active": true,
+      "order": 3
+    },
+    {
+      "id": 4,
+      "title": "Şehirler Arası",
+      "icon": "Truck",
+      "desc": "41 ilde planlı sefer ağı.",
+      "active": true,
+      "order": 4
+    },
+    {
+      "id": 5,
+      "title": "Hassas Eşya",
+      "icon": "Music",
+      "desc": "Piyano, tablo, antika.",
+      "active": true,
+      "order": 5
+    },
+    {
+      "id": 6,
+      "title": "Depolama",
+      "icon": "PackageOpen",
+      "desc": "İklim kontrollü, sigortalı kasalı depo.",
+      "active": true,
+      "order": 6
+    }
+  ],
+  "faqs": [
+    {
+      "id": 1,
+      "q": "Eşyalarım sigortalı mı?",
+      "a": "Evet. Anadolu Sigorta poliçesi altında 250.000 ₺ standart teminat.",
+      "active": true
+    },
+    {
+      "id": 2,
+      "q": "Ödemeyi ne zaman yapıyorum?",
+      "a": "%30 kapora rezervasyonda, kalan tutar taşıma günü.",
+      "active": true
+    },
+    {
+      "id": 3,
+      "q": "Son anda iptal edebilir miyim?",
+      "a": "48 saat öncesine kadar ücretsiz; 24 saatten kısa için %25.",
+      "active": true
+    }
+  ],
+  "testimonials": [
+    {
+      "id": 1,
+      "name": "Selin Aktaş",
+      "route": "Kadıköy → Çeşme",
+      "date": "Mart 2025",
+      "rating": 5,
+      "text": "Piyanomu taşıyacaklarına önce inanmadım.",
+      "approved": true
+    },
+    {
+      "id": 2,
+      "name": "Mehmet Doğan",
+      "route": "Beşiktaş → Bodrum",
+      "date": "Şubat 2025",
+      "rating": 5,
+      "text": "12 yıl önce taşınmıştım, hâlâ aynı ekibi tutuyorum.",
+      "approved": true
+    },
+    {
+      "id": 3,
+      "name": "Murat Aksoy",
+      "route": "Şişli → Çankaya",
+      "date": "Mayıs 2026",
+      "rating": 5,
+      "text": "Ekip çok titiz, her şey planlandığı gibi.",
+      "approved": false
+    }
+  ],
+  "messages": [
+    {
+      "id": 1,
+      "name": "Esra Kaya",
+      "phone": "+905321111000",
+      "subject": "Pazar günü taşıma mümkün mü?",
+      "createdAt": "2026-05-05T08:30:00Z",
+      "read": false
+    },
+    {
+      "id": 2,
+      "name": "Hasan Bölük",
+      "phone": "+905321111001",
+      "subject": "Antika piyano için özel teklif",
+      "createdAt": "2026-05-05T11:42:00Z",
+      "read": false
+    },
+    {
+      "id": 3,
+      "name": "Burcu Çelik",
+      "phone": "+905321111002",
+      "subject": "Depolama hizmeti süreleri",
+      "createdAt": "2026-05-04T17:00:00Z",
+      "read": true
+    }
+  ],
+  "slides": [
+    {
+      "id": 1,
+      "image": "https://images.pexels.com/photos/4506270/pexels-photo-4506270.jpeg?auto=compress&cs=tinysrgb&w=1200&h=900&fit=crop",
+      "title": "Eşyanız emanet",
+      "subtitle": "Sigortalı, kayıtlı, üniformalı ekiple",
+      "ctaText": "Hemen teklif al",
+      "ctaLink": "/teklif-al",
+      "order": 1,
+      "active": true
+    },
+    {
+      "id": 2,
+      "image": "https://images.pexels.com/photos/7464705/pexels-photo-7464705.jpeg?auto=compress&cs=tinysrgb&w=1000&h=700&fit=crop",
+      "title": "Foto-envanter",
+      "subtitle": "Sabit fiyat, sürpriz fark yok",
+      "ctaText": "Detaylar",
+      "ctaLink": "/hizmetler",
+      "order": 2,
+      "active": true
+    },
+    {
+      "id": 3,
+      "image": "https://images.pexels.com/photos/4392040/pexels-photo-4392040.jpeg?auto=compress&cs=tinysrgb&w=1000&h=700&fit=crop",
+      "title": "41 ilde sefer ağı",
+      "subtitle": "İstanbul'dan tüm Türkiye'ye",
+      "ctaText": "Filomuz",
+      "ctaLink": "/filomuz",
+      "order": 3,
+      "active": true
+    },
+    {
+      "id": 4,
+      "image": "https://images.pexels.com/photos/4392027/pexels-photo-4392027.jpeg?auto=compress&cs=tinysrgb&w=1000&h=700&fit=crop",
+      "title": "Hassas eşya ekibi",
+      "subtitle": "Piyano, antika, sanat eserleri",
+      "ctaText": "Hizmetlerimiz",
+      "ctaLink": "/hizmetler",
+      "order": 4,
+      "active": true
+    },
+    {
+      "id": 5,
+      "image": "https://images.pexels.com/photos/4391495/pexels-photo-4391495.jpeg?auto=compress&cs=tinysrgb&w=1000&h=700&fit=crop",
+      "title": "Asansörlü taşıma",
+      "subtitle": "12. kata kadar dış cephe asansörü dahil",
+      "ctaText": "Daha fazla",
+      "ctaLink": "/hizmetler",
+      "order": 5,
+      "active": true
+    }
+  ]
+}

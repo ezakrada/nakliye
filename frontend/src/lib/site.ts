@@ -1,0 +1,36 @@
+export const site = {
+  name: "Eşyam",
+  legal: "Eşyam Nakliyat",
+  tagline: "Eşyanız bizimle yolculuk eder.",
+  taglineAlt: "Taşınmak, telaş etmemektir.",
+  domain: "nakliye.demolion.cloud",
+  phone: "+90 535 104 54 43",
+  phoneRaw: "+905351045443",
+  whatsapp: "+905351045443",
+  whatsappLink:
+    "https://wa.me/905351045443?text=Merhaba%2C%20ev%20ta%C5%9F%C4%B1ma%20i%C3%A7in%20teklif%20almak%20istiyorum",
+  email: "merhaba@esyam.com.tr",
+  address: "İstanbul · Anadolu Yakası Operasyon Merkezi",
+  hours: "Hafta içi 08:00 — 20:00 · Cumartesi 09:00 — 18:00",
+  founded: 2013,
+  trust: {
+    moveCount: 14000,
+    cityCount: 41,
+    fleetCount: 28,
+    teamCount: 64,
+    onTimePct: 98,
+    insurer: "Anadolu Sigorta",
+    licenses: ["TOBB Üye", "K1 Yetki Belgesi", "Ulaşım Servisleri Birliği"],
+  },
+  social: {
+    instagram: "https://instagram.com/esyam.nakliyat",
+  },
+  buyUrl: "https://ezar.tr/pay.php?product=21",
+  nav: [
+    { href: "/#hizmetler", label: "Hizmetlerimiz" },
+    { href: "/#nasil", label: "Nasıl Çalışır" },
+    { href: "/#filo", label: "Filomuz" },
+    { href: "/#yorumlar", label: "Müşterilerimiz" },
+    { href: "/hakkimizda", label: "Hakkımızda" },
+  ],
+} as const;

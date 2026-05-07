@@ -1,0 +1,10 @@
+node_modules
+.next
+.git
+.env*.local
+.dockerignore
+Dockerfile
+README.md
+.vscode
+*.log
+data/db.json
