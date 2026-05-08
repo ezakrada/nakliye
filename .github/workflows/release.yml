@@ -123,11 +123,25 @@ jobs:
           # update.ezar.tr'dan en son web-install.php'yi indir (sürüme eşlenir)
           curl -sfL https://update.ezar.tr/web-install.php -o install.php || \
             echo '<?php die("Web installer indirilemedi — manuel kurulum gerek."); ?>' > install.php
-          # database.sql varsa kök dizine kopyala (cPanel installer için)
+
+          # database.sql varsa kök dizine kopyala
           for d in db database; do
             if [ -f "$d"/*.sql ]; then cp "$d"/*.sql ./database.sql 2>/dev/null && break; fi
             if [ -f "$d"/*.sql.gz ]; then gunzip -c "$d"/*.sql.gz > ./database.sql && break; fi
           done
+
+          # .htaccess — kurulum yapılmadıysa OTOMATİK install.php'ye yönlendir
+          # (cPanel/DirectAdmin/Plesk Apache kullanır → bu çalışır)
+          if [ ! -f .htaccess ]; then
+            cat > .htaccess <<'HTACCESS'
+          # Auto-redirect to web installer if not yet installed
+          RewriteEngine On
+          RewriteCond %{REQUEST_FILENAME} !-f
+          RewriteCond %{REQUEST_FILENAME} !-d
+          RewriteCond %{DOCUMENT_ROOT}/.installed !-f
+          RewriteRule ^$ /install.php [L,R=302]
+          HTACCESS
+          fi
 
       # ─── ZIP paketle ───
       - name: Create ZIP
