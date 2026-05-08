@@ -1,0 +1,126 @@
+name: Release Pipeline
+
+# Tag push'larında çalışır: v1.2.3, v2.0.0-beta vs.
+# Yapar:
+#   1. Kodu obfuscate et (PHP için YAK Pro, JS için javascript-obfuscator)
+#   2. ZIP paketle
+#   3. Release oluştur ve ZIP'i asset olarak ekle
+#   4. license.ezar.tr'a webhook event'i gider (otomatik)
+#
+# Gerekli secrets (GitHub repo → Settings → Secrets):
+#   (Hiçbiri zorunlu değil — webhook GitHub'ın kendi sisteminden gelir)
+
+on:
+  push:
+    tags: ['v*']
+
+permissions:
+  contents: write   # release oluşturma
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      # ─── Repo ve dependencies ───
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.3'
+          extensions: mbstring, intl, openssl, curl, zip
+          tools: composer
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install PHP deps
+        run: |
+          if [ -f composer.json ]; then
+            composer install --no-dev --optimize-autoloader
+          fi
+
+      - name: Install Node deps
+        run: |
+          if [ -f package.json ]; then
+            npm ci --omit=dev
+          fi
+
+      # ─── Build (Next.js varsa) ───
+      - name: Build Next.js
+        run: |
+          if [ -f next.config.js ] || [ -f next.config.mjs ]; then
+            npm run build
+          fi
+
+      # ─── Obfuscation ───
+      # PHP için YAK Pro Obfuscator (ücretsiz, ionCube alternatifi)
+      - name: Install YAK Pro Obfuscator
+        run: |
+          if [ -d app ] || [ -d src ]; then
+            git clone --depth 1 https://github.com/pk-fr/yakpro-po.git /tmp/yakpro
+            cd /tmp/yakpro && composer install --no-dev
+          fi
+
+      - name: Obfuscate PHP
+        run: |
+          if [ -d /tmp/yakpro ]; then
+            for dir in app src; do
+              if [ -d "$dir" ]; then
+                php /tmp/yakpro/yakpro-po.php --srcdir="$dir" --destdir="${dir}_obfuscated" || true
+                rm -rf "$dir"
+                mv "${dir}_obfuscated" "$dir"
+              fi
+            done
+          fi
+
+      # JS için javascript-obfuscator
+      - name: Obfuscate JS
+        run: |
+          if [ -f next.config.js ] || [ -f next.config.mjs ]; then
+            npm install -g javascript-obfuscator
+            find .next/static/chunks -name "*.js" -type f | while read f; do
+              javascript-obfuscator "$f" --output "$f.obf" --compact true --string-array true --string-array-encoding base64 --rename-globals false
+              mv "$f.obf" "$f"
+            done
+          fi
+
+      # ─── ZIP paketle ───
+      - name: Create ZIP
+        run: |
+          VERSION="${GITHUB_REF#refs/tags/v}"
+          ZIP_NAME="${GITHUB_REPOSITORY#*/}-v${VERSION}.zip"
+          # Hassas + gereksiz dosyaları hariç tut
+          zip -rq "$ZIP_NAME" . \
+            -x ".git/*" ".github/*" "node_modules/*" "tests/*" \
+               "*.test.php" "*.test.js" ".env*" ".gitignore" ".gitattributes" \
+               "*.md" "phpunit.xml*" "package-lock.json" "composer.lock"
+          echo "ZIP_NAME=$ZIP_NAME" >> $GITHUB_ENV
+          echo "VERSION=$VERSION" >> $GITHUB_ENV
+          ls -la "$ZIP_NAME"
+
+      # ─── GitHub Release ───
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v1
+        with:
+          name: "v${{ env.VERSION }}"
+          body: |
+            **Otomatik release**
+
+            Bu release Ezar.TR Lisans Pipeline'ı tarafından oluşturuldu.
+
+            - PHP kaynak kodu obfuscate edildi (YAK Pro)
+            - JS bundle'ları obfuscate edildi (javascript-obfuscator)
+            - ZIP paketlendi: `${{ env.ZIP_NAME }}`
+
+            **Müşterilere otomatik dağıtım için** license.ezar.tr webhook'u tetiklendi.
+            Aktif kurulumlar `Güncellemeler → Şimdi Güncelle` ile bu sürüme geçebilir.
+          files: ${{ env.ZIP_NAME }}
+          draft: false
+          prerelease: ${{ contains(env.VERSION, '-') }}
+
+      # NOT: Release event'i webhook üzerinden license.ezar.tr/api/webhooks/github-release'a
+      # otomatik gider (GitHub repo Settings → Webhooks). Manuel kurulum gerekmiyor.
